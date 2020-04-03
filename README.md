@@ -3,7 +3,9 @@
 This is an opinionated, containerized version of
 [IkiWiki](https://ikiwiki.info).
 Builds of the container are available at
-<https://quay.io/repository/jdowland/opinionated-ikiwiki>.
+<https://quay.io/repository/jdowland/opinionated-ikiwiki>. They're based on
+the *slim* variant of the current Debian stable release, and are approximately
+80 MiB compressed, 280 MiB on-disk.
 
  * The wiki is at [/](/);
  * The CGI end point is [/ikiwiki](/ikiwiki);
@@ -11,12 +13,16 @@ Builds of the container are available at
    * [/git/ikiwiki.git](/git/ikiwiki.git) — the wiki source
    * [/git/libdir.git](/git/libdir.git) — for custom plugins (default is empty)
    * [/git/templates.git](/git/templates.git) — for custom templates (default is empty)
+ * the HTTPD is lighttpd
+ * The c-compiler is `tcc`, rather than `gcc` (saving about 100 MiB)
+ * There is no Python in the container
 
 The following changes are made from a default IkiWiki installation:
 
  * theme plugin enabled and actiontabs selected
  * html5 by default
- * Python plugins are removed to fix a bug
+ * Python plugins are removed to fix a
+   [bug](https://ikiwiki.info/bugs/inactive_python_plugins_cause_error_output_when_python_interpreter_is_missing/)
 
 ## Usage
 

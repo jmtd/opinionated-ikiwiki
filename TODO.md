@@ -7,3 +7,5 @@
  * should we root the wiki at a subdir so /git and /ikiwiki are not shadowing it
     we are also shadowing /ikiwiki/
  * adjust ikiwiki plugin to generate htpasswd output of account DB for cgit
+ * version control the setup file
+ * remove need for suid wrapper (patch Wrapper.pm?)
