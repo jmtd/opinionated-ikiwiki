@@ -30,7 +30,7 @@ The Git repositories URIs are currently unprotected.
 
 ## TODO
 
-See [TODO](TODO).
+See [TODO](TODO.md).
 
 ## Who / License
 
