@@ -66,11 +66,15 @@ ENV USER ikiwiki
 # RUN chown ikiwiki /etc/ikiwiki/wikilist
 
 ADD \
-    auto.setup git-auth.conf launch.sh /home/ikiwiki/
+    auto.setup git-auth.conf launch.sh \
+    /home/ikiwiki/
 RUN chown ikiwiki \
-    auto.setup git-auth.conf launch.sh /home/ikiwiki/
+    auto.setup git-auth.conf launch.sh \
+    /home/ikiwiki/
 
-ADD ikiwiki.conf /etc/lighttpd/conf-enabled/ikiwiki.conf
+ADD ikiwiki.conf \
+    git.conf \
+    /etc/lighttpd/conf-enabled/
 
 RUN chmod 777 /var/run \
     /var/cache/lighttpd/compress \

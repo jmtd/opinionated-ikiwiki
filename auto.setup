@@ -17,7 +17,7 @@ IkiWiki::Setup::Automator->import(
 	srcdir => "$ENV{HOME}/$wikiname_short",
 	destdir => "$ENV{HOME}/public_html",
 	repository => "$ENV{HOME}/conf/git/ikiwiki.git",
-	dumpsetup => "$ENV{HOME}/conf/$wikiname_short.setup",
+	dumpsetup => "$ENV{HOME}/setup",
 	url => "http://localhost/",
 	cgiurl => "http://localhost/ikiwiki",
 	cgi_wrapper => "$ENV{HOME}/ikiwiki.cgi",

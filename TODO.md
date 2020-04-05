@@ -9,3 +9,6 @@
  * adjust ikiwiki plugin to generate htpasswd output of account DB for cgit
  * version control the setup file
  * remove need for suid wrapper (patch Wrapper.pm?)
+ * force-pushing breaks ikiwiki
+    fatal: refusing to merge unrelated histories
+    'git pull --prune origin' failed:  at /usr/local/share/perl/5.28.1/IkiWiki/Plugin/git.pm line 251.
