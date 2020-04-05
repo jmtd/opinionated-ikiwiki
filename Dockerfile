@@ -37,6 +37,7 @@ ENV LANG C.UTF-8
 RUN apt-get update \
     && apt-get install -y \
         git lighttpd \
+        apache2-utils \
         gettext \
         tcc \
         libtext-markdown-discount-perl \
@@ -66,10 +67,10 @@ ENV USER ikiwiki
 # RUN chown ikiwiki /etc/ikiwiki/wikilist
 
 ADD \
-    auto.setup git-auth.conf launch.sh \
+    auto.setup httpauth.conf launch.sh \
     /home/ikiwiki/
 RUN chown ikiwiki \
-    auto.setup git-auth.conf launch.sh \
+    auto.setup httpauth.conf launch.sh \
     /home/ikiwiki/
 
 ADD ikiwiki.conf \

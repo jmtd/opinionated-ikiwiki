@@ -12,3 +12,6 @@
  * force-pushing breaks ikiwiki
     fatal: refusing to merge unrelated histories
     'git pull --prune origin' failed:  at /usr/local/share/perl/5.28.1/IkiWiki/Plugin/git.pm line 251.
+    * undo the initial commit from automator so we can easily push an existing
+      wiki into a new container
+ * unauthenticated git pull, and split cgiauthurl for ikiwiki

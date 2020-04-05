@@ -21,6 +21,7 @@ The following changes are made from a default IkiWiki installation:
 
  * theme plugin enabled and actiontabs selected
  * html5 by default
+ * httpauth enabled
  * Python plugins are removed to fix a
    [bug](https://ikiwiki.info/bugs/inactive_python_plugins_cause_error_output_when_python_interpreter_is_missing/)
 
@@ -31,8 +32,9 @@ The following changes are made from a default IkiWiki installation:
 Then access your wiki at <http://localhost:8080>
 or pull/push to <http://localhost:8080/git/ikiwiki.git>
 
-The default web user is `admin` and password `password`.
-The Git repositories URIs are currently unprotected.
+The default user is `admin` and password `password`. This is needed for
+editing the wiki via the web interface or pushing/pulling from the git
+repositories over HTTP.
 
 ## TODO
 

@@ -32,5 +32,8 @@ for r in conf/git/*.git; do
     )
 done
 
+# set up htpasswd file
+htpasswd -cb /home/ikiwiki/conf/htpasswd admin password
+
 # launch the webserver
 exec /usr/sbin/lighttpd -Df /etc/lighttpd/lighttpd.conf
