@@ -22,7 +22,7 @@ IkiWiki::Setup::Automator->import(
 	cgiurl => "http://localhost/ikiwiki",
 	cgi_wrapper => "$ENV{HOME}/ikiwiki.cgi",
 	adminemail => "admin\@$domain",
-	add_plugins => [qw{goodstuff websetup theme httpauth}],
+	add_plugins => [qw{goodstuff websetup theme httpauth graphviz sidebar remove rename}],
 	disable_plugins => [qw{}],
 	libdir => "$ENV{HOME}/libdir",
 	templatedir => "$ENV{HOME}/templates",

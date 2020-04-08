@@ -35,11 +35,12 @@ ENV LANG C.UTF-8
 # Date::Parse -> libtimedate-perl
 # Data::Dumper - in perl package
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         git lighttpd \
         apache2-utils \
         gettext \
         tcc \
+        libc6-dev \
         libtext-markdown-discount-perl \
         libhtml-scrubber-perl \
         libhtml-template-perl \
@@ -54,6 +55,9 @@ RUN apt-get update \
         libyaml-libyaml-perl \
         libjson-perl \
         librpc-xml-perl \
+        graphviz \
+        graphicsmagick-libmagick-dev-compat \
+
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
@@ -63,14 +67,17 @@ RUN adduser --gecos "ikiwiki user" --disabled-password ikiwiki
 WORKDIR /home/ikiwiki
 ENV USER ikiwiki
 
-# silence a non-fatal error
-# RUN chown ikiwiki /etc/ikiwiki/wikilist
-
 ADD \
-    auto.setup httpauth.conf launch.sh \
+    auto.setup \
+    httpauth.conf \
+    launch.sh \
+    setup.sh \
     /home/ikiwiki/
 RUN chown ikiwiki \
-    auto.setup httpauth.conf launch.sh \
+    auto.setup \
+    httpauth.conf \
+    launch.sh \
+    setup.sh \
     /home/ikiwiki/
 
 ADD ikiwiki.conf \
@@ -93,4 +100,7 @@ RUN rm /usr/local/lib/ikiwiki/plugins/rst \
 
 USER ikiwiki
 EXPOSE 8080
+
+RUN /home/ikiwiki/setup.sh
+
 CMD /home/ikiwiki/launch.sh

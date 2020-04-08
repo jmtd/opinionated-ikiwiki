@@ -15,3 +15,12 @@
     * undo the initial commit from automator so we can easily push an existing
       wiki into a new container
  * unauthenticated git pull, and split cgiauthurl for ikiwiki
+
+ * imagemagick ✓
+ * sidebar ✓
+ * graphviz ✓
+
+ * split launch.sh into setup.sh, launch.sh ✓
+ * launch.sh needs to re-clone the source repository if/because the relationship can be
+   broken by persistent volumes (original value is clone of BUILD TIME repo, not whatever
+   is volume mounted)
