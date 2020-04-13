@@ -72,12 +72,16 @@ ADD \
     httpauth.conf \
     launch.sh \
     setup.sh \
+    pre-receive \
+    post-update \
     /home/ikiwiki/
 RUN chown ikiwiki \
     auto.setup \
     httpauth.conf \
     launch.sh \
     setup.sh \
+    pre-receive \
+    post-update \
     /home/ikiwiki/
 
 ADD ikiwiki.conf \

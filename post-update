@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+# is the source directory missing? Re-create it
+if [ ! -d /home/ikiwiki/src ]; then
+    # XXX we should do this under a lock
+    (   # inside a subshell to not leak the environment change
+        cd /home/ikiwiki
+
+        # fix "ref updates forbidden inside quarantine environment"
+        unset "${!GIT_@}"
+        git clone /home/ikiwiki/conf/git/ikiwiki.git src
+
+        mv /home/ikiwiki/dot-ikiwiki src/.ikiwiki
+    )
+fi
+
+exec hooks/post-update.ikiwiki

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+while read line; do
+    set -- $line
+    oldrev="$1"
+    newrev="$2"
+    refname="$3"
+
+    git rev-list "$oldrev" "^$newrev" | while read ref; do
+        # XXX we should do this under a lock
+        mv /home/ikiwiki/src/.ikiwiki /home/ikiwiki/dot-ikiwiki
+        rm -rf /home/ikiwiki/public_html /home/ikiwiki/src
+        exit 0
+    done
+
+done

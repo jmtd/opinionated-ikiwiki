@@ -9,18 +9,9 @@
  * adjust ikiwiki plugin to generate htpasswd output of account DB for cgit
  * version control the setup file
  * remove need for suid wrapper (patch Wrapper.pm?)
- * force-pushing breaks ikiwiki
-    fatal: refusing to merge unrelated histories
-    'git pull --prune origin' failed:  at /usr/local/share/perl/5.28.1/IkiWiki/Plugin/git.pm line 251.
-    * undo the initial commit from automator so we can easily push an existing
-      wiki into a new container
+ * force-pushing results in broken CSS until a site rebuild occurs (relates to
+   theme use)
  * unauthenticated git pull, and split cgiauthurl for ikiwiki
-
- * imagemagick ✓
- * sidebar ✓
- * graphviz ✓
-
- * split launch.sh into setup.sh, launch.sh ✓
  * launch.sh needs to re-clone the source repository if/because the relationship can be
    broken by persistent volumes (original value is clone of BUILD TIME repo, not whatever
    is volume mounted)

@@ -17,6 +17,19 @@ git config --global receive.denynonfastforwards false
 printf "password\npassword" | ikiwiki --setup auto.setup
 rm auto.setup
 
+# can't seem to force this in auto.setup
+sed -i \
+    's#^git_wrapper: /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update#&.ikiwiki#' \
+    setup
+
+# early catch a force-push so we can rebuild the whole wiki
+cp -t  /home/ikiwiki/conf/git/ikiwiki.git/hooks \
+    pre-receive \
+    post-update
+
+# this is necessary despite the global setting as the local setting overrides it
+GIT_DIR=/home/ikiwiki/conf/git/ikiwiki.git git config receive.denynonfastforwards false
+
 # Set up git repos for libdir (plugins) and templates (page templates)
 # XXX: tracking branches won't be set up without initial commits
 for r in libdir templates; do
