@@ -31,13 +31,21 @@ cp -t  /home/ikiwiki/conf/git/ikiwiki.git/hooks \
 GIT_DIR=/home/ikiwiki/conf/git/ikiwiki.git git config receive.denynonfastforwards false
 
 # Set up git repos for libdir (plugins) and templates (page templates)
-# XXX: tracking branches won't be set up without initial commits
 for r in libdir templates; do
     DIR="conf/git/$r.git"
-    GIT_DIR="$DIR" git init \
-        && git clone "$DIR" $r \
-        && echo "cd /home/ikiwiki/$r && git pull" > "$DIR"/hooks/post-update \
-        && chmod +x "$DIR"/hooks/post-update
+    GIT_DIR="$DIR" git init
+    git clone "$DIR" $r
+    cat >"$DIR"/hooks/post-update <<EOF
+#!/bin/bash
+set -euo pipefail
+set -x
+unset "\${!GIT_@}"
+cd "/home/ikiwiki/$r"
+git pull
+export HOME=/home/ikiwiki
+/usr/local/bin/ikiwiki --setup /home/ikiwiki/setup --rebuild
+EOF
+    chmod +x "$DIR"/hooks/post-update
 done
 
 # set up htpasswd file
