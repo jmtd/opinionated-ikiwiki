@@ -1,6 +1,5 @@
 #!/bin/bash
 set -euo pipefail
-set -x
 
 # necessary to sync with a volume-mounted repository
 ikiwiki --setup ~/setup --rebuild --wrappers

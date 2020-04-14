@@ -108,4 +108,4 @@ EXPOSE 8080
 
 RUN /home/ikiwiki/setup.sh
 
-CMD /home/ikiwiki/launch.sh
+CMD ["/home/ikiwiki/launch.sh"]
