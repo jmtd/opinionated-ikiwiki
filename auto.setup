@@ -19,7 +19,7 @@ IkiWiki::Setup::Automator->import(
 	repository => "$ENV{HOME}/conf/git/ikiwiki.git",
 	dumpsetup => "$ENV{HOME}/conf/setup",
 	url => "http://localhost/",
-	cgiurl => "http://localhost/ikiwiki",
+	cgiurl => "http://localhost/ikiwiki.cgi",
 	cgi_wrapper => "$ENV{HOME}/ikiwiki.cgi",
 	adminemail => "admin\@$domain",
 	add_plugins => [qw{goodstuff websetup theme httpauth graphviz sidebar remove rename}],
