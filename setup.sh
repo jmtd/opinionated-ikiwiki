@@ -20,7 +20,7 @@ rm auto.setup
 # can't seem to force this in auto.setup
 sed -i \
     's#^git_wrapper: /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update#&.ikiwiki#' \
-    setup
+    conf/setup
 
 # early catch a force-push so we can rebuild the whole wiki
 cp -t  /home/ikiwiki/conf/git/ikiwiki.git/hooks \
@@ -43,7 +43,7 @@ unset "\${!GIT_@}"
 cd "/home/ikiwiki/$r"
 git pull
 export HOME=/home/ikiwiki
-/usr/local/bin/ikiwiki --setup /home/ikiwiki/setup --rebuild
+/usr/local/bin/ikiwiki --setup /home/ikiwiki/conf/setup --rebuild
 EOF
     chmod +x "$DIR"/hooks/post-update
 done
