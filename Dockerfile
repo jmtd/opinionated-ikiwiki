@@ -58,7 +58,6 @@ RUN apt-get update \
         graphviz \
         graphicsmagick-libmagick-dev-compat \
         libtext-csv-perl \
-
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
