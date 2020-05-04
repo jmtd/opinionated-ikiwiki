@@ -22,6 +22,12 @@ sed -i \
     's#^git_wrapper: /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update#&.ikiwiki#' \
     conf/setup
 
+# reclone with --shared setting
+mv src/.ikiwiki dot-ikiwiki
+rm -rf src
+git clone --shared conf/git/ikiwiki.git src
+mv dot-ikiwiki src/.ikiwiki
+
 # early catch a force-push so we can rebuild the whole wiki
 cp -t  /home/ikiwiki/conf/git/ikiwiki.git/hooks \
     pre-receive \

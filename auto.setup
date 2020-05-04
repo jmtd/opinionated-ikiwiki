@@ -31,4 +31,6 @@ IkiWiki::Setup::Automator->import(
 	syslog => 0,
         theme => "actiontabs",
         html5 => 1,
+        hardlink => 1,
+        only_committed_changes => 1,
 )
