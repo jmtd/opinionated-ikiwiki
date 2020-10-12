@@ -25,6 +25,10 @@ The following changes are made from a default IkiWiki installation:
  * Python plugins are removed to fix a
    [bug](https://ikiwiki.info/bugs/inactive_python_plugins_cause_error_output_when_python_interpreter_is_missing/)
 
+The IkiWiki version used is normally the latest tagged release with some
+extra patches on top. See <https://github.com/jmtd/ikiwiki/blob/opinionated-doc/README.md>
+for the details.
+
 ## Usage
 
     podman run --name my_ikiwiki -p 8080:8080 quay.io/jdowland/opinionated-ikiwiki:latest
