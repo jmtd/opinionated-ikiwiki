@@ -15,12 +15,12 @@ RUN apt-get update \
 WORKDIR /usr/src
 
 # obtain the git source
-RUN git clone git://git.ikiwiki.info/ \
-    && cd git.ikiwiki.info \
-    && git checkout 3.20200202.3
+RUN git clone https://github.com/jmtd/ikiwiki.git \
+    && cd ikiwiki \
+    && git checkout opinionated
 
 # build and install ikiwiki
-WORKDIR /usr/src/git.ikiwiki.info
+WORKDIR /usr/src/ikiwiki
 RUN perl Makefile.PL \
     && make
 RUN make pure_install
