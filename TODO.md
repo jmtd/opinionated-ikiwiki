@@ -12,9 +12,6 @@
    theme use)
     ./themes is an underlay directory added by the plugin at one point
  * unauthenticated git pull, and split cgiauthurl for ikiwiki
- * launch.sh needs to re-clone the source repository if/because the relationship can be
-   broken by persistent volumes (original value is clone of BUILD TIME repo, not whatever
-   is volume mounted)
  * when a force-push-triggered rebuild is triggered, do any stale files in ~/public_html
    from the prior version remain, or does ikiwiki clean them up?
 
