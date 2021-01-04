@@ -5,7 +5,7 @@ This is an opinionated, containerized version of
 Builds of the container are available at
 <https://quay.io/repository/jdowland/opinionated-ikiwiki>. They're based on
 the *slim* variant of the current Debian stable release, and are approximately
-80 MiB compressed, 280 MiB on-disk.
+120 MiB compressed, 364 MiB on-disk.
 
  * The wiki is at [/](/);
  * The CGI end point is [/ikiwiki](/ikiwiki);

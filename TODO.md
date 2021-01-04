@@ -16,3 +16,4 @@
    from the prior version remain, or does ikiwiki clean them up?
 
  * PATH is missing /usr/local/bin in some situations (web-initiated rebuilds)
+ * image size has ballooned from 80/280 to 120/364 MiB. Why?
