@@ -59,6 +59,7 @@ RUN apt-get update \
         graphviz \
         graphicsmagick-imagemagick-compat \
         libtext-csv-perl \
+        liblwpx-paranoidagent-perl \
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
