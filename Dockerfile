@@ -57,7 +57,7 @@ RUN apt-get update \
         libjson-perl \
         librpc-xml-perl \
         graphviz \
-        graphicsmagick-libmagick-dev-compat \
+        graphicsmagick-imagemagick-compat \
         libtext-csv-perl \
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
