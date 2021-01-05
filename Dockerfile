@@ -35,6 +35,7 @@ ENV LANG C.UTF-8
 # Date::Parse -> libtimedate-perl
 # Data::Dumper - in perl package
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
         git lighttpd \
         apache2-utils \
