@@ -60,6 +60,7 @@ RUN apt-get update \
         graphicsmagick-imagemagick-compat \
         libtext-csv-perl \
         liblwpx-paranoidagent-perl \
+        pwgen \
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
@@ -106,7 +107,6 @@ RUN rm /usr/local/lib/ikiwiki/plugins/rst \
 
 USER ikiwiki
 EXPOSE 8080
-
 RUN /home/ikiwiki/setup.sh
 
 CMD ["/home/ikiwiki/launch.sh"]
