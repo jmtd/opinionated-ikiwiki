@@ -20,7 +20,11 @@ fi
 
 touch /home/ikiwiki/conf/htpasswd
 if ! grep -q ^admin: /home/ikiwiki/conf/htpasswd; then
-    PASSWORD="$(pwgen -s 32)"
+    set +e
+    if test -z "$PASSWORD"; then
+        PASSWORD="$(pwgen -s 32)"
+    fi
+    set -e
     echo "$PASSWORD" | htpasswd -i /home/ikiwiki/conf/htpasswd admin
     echo "$PASSWORD" >&2
     unset PASSWORD
