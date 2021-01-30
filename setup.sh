@@ -53,6 +53,3 @@ export HOME=/home/ikiwiki
 EOF
     chmod +x "$DIR"/hooks/post-update
 done
-
-# set up htpasswd file
-htpasswd -cb /home/ikiwiki/conf/htpasswd admin password

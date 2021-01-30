@@ -18,5 +18,13 @@ if ! GIT_DIR=./src/.git git show-ref >/dev/null 2>&1; then
     ikiwiki --setup ~/conf/setup --rebuild --wrappers
 fi
 
+touch /home/ikiwiki/conf/htpasswd
+if ! grep -q ^admin: /home/ikiwiki/conf/htpasswd; then
+    PASSWORD="$(pwgen -s 32)"
+    echo "$PASSWORD" | htpasswd -i /home/ikiwiki/conf/htpasswd admin
+    echo "$PASSWORD" >&2
+    unset PASSWORD
+fi
+
 # launch the webserver
 exec /usr/sbin/lighttpd -Df /etc/lighttpd/lighttpd.conf
