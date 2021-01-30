@@ -36,9 +36,14 @@ for the details.
 Then access your wiki at <http://localhost:8080>
 or pull/push to <http://localhost:8080/git/ikiwiki.git>
 
-The default user is `admin` and password `password`. This is needed for
+The default user is `admin` and a random password is generated when the
+container is first started up, and echoed to `stderr`.  This is needed for
 editing the wiki via the web interface or pushing/pulling from the git
 repositories over HTTP.
+
+On the first container start-up, you can override the random password
+generation by supplying one in the `PASSWORD` environment variable. The
+variable is unset before the HTTPD daemon starts.
 
 ## TODO
 
