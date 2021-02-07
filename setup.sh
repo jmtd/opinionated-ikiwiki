@@ -17,10 +17,11 @@ git config --global receive.denynonfastforwards false
 printf "password\npassword" | ikiwiki --setup auto.setup
 rm auto.setup
 
-# can't seem to force this in auto.setup
+# Ikiwiki::Setup::Automator overwrites this value
 sed -i \
     's#^git_wrapper: /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update#&.ikiwiki#' \
     conf/setup
+mv /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update{,.ikiwiki}
 
 # reclone with --shared setting
 mv src/.ikiwiki dot-ikiwiki
