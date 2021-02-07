@@ -1,5 +1,7 @@
 # Opinionated Ikiwiki-in-a-box
 
+[![Docker Repository on Quay](https://quay.io/repository/jdowland/opinionated-ikiwiki/status "Docker Repository on Quay")](https://quay.io/repository/jdowland/opinionated-ikiwiki)
+
 This is an opinionated, containerized version of
 [IkiWiki](https://ikiwiki.info).
 Builds of the container are available at
