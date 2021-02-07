@@ -7,10 +7,12 @@ while read line; do
     newrev="$2"
     refname="$3"
 
+    # if any commits exist which are reachable from the old ref but not the new one,
+    # this is a force push
     git rev-list "$oldrev" "^$newrev" | while read ref; do
         # XXX we should do this under a lock
         mv /home/ikiwiki/src/.ikiwiki /home/ikiwiki/dot-ikiwiki
-        rm -rf /home/ikiwiki/src
+        rm -rf /home/ikiwiki/src /home/ikiwiki/public_html
         exit 0
     done
 

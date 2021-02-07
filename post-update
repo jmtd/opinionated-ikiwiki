@@ -15,4 +15,15 @@ if [ ! -d /home/ikiwiki/src ]; then
     )
 fi
 
-exec hooks/post-update.ikiwiki
+if [ ! -d /home/ikiwiki/public_html ]; then
+    # force a full refresh, to pull in underlay files, theme files, etc.
+    (
+        export PATH=/usr/local/bin:$PATH
+        export HOME=/home/ikiwiki
+        unset "${!GIT_@}"
+        ikiwiki --setup /home/ikiwiki/conf/setup --rebuild --wrappers
+    )
+else
+    exec hooks/post-update.ikiwiki
+fi
+
