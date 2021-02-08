@@ -27,3 +27,7 @@ Maybe:
     ./themes is an underlay directory added by the plugin at one point
  * unauthenticated git pull, and split cgiauthurl for ikiwiki
  * include Pagespec Aliases plugin
+
+ * upgrade to next debian stable version (bullseye)
+   When does buster security support end?
+   respin on bullseye grows image from 290MB to 314MB  = +8%
