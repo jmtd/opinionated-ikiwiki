@@ -57,7 +57,7 @@ RUN apt-get update \
         libjson-perl \
         librpc-xml-perl \
         graphviz \
-        graphicsmagick-imagemagick-compat \
+        libimage-magick-perl \
         libtext-csv-perl \
         liblwpx-paranoidagent-perl \
         pwgen \
