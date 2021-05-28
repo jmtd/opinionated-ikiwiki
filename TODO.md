@@ -2,12 +2,7 @@
  =======
 
 1.0-0:
- * what's broken?
-
  * Does volume handling work properly? enumerate the edge cases to consider
-
- * PATH is missing /usr/local/bin in some situations (web-initiated rebuilds)
-    is this still true?
 
 1.1-0:
     possibly apache as httpd
