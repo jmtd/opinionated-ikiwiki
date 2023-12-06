@@ -1,11 +1,15 @@
 # builder ####################################################################
+ARG DEBIAN_VERSION=12
 
-FROM debian:10-slim as builder
+FROM debian:$DEBIAN_VERSION-slim as builder
+
+ARG DEBIAN_CODENAME=bookworm
 
 MAINTAINER Jonathan Dowland <jmtd@debian.org>
 ENV LANG C.UTF-8
 
-RUN echo deb-src http://deb.debian.org/debian buster main >> /etc/apt/sources.list
+RUN echo deb-src [ signed-by=/usr/share/keyrings/debian-archive-keyring.gpg ] http://deb.debian.org/debian/ $DEBIAN_CODENAME main \
+    | tee /etc/apt/sources.list.d/src.list
 
 RUN apt-get update \
     && apt-get build-dep -y ikiwiki \
@@ -26,7 +30,7 @@ RUN perl Makefile.PL \
 RUN make pure_install
 
 # Runner ####################################################################
-FROM debian:10-slim
+FROM debian:$DEBIAN_VERSION-slim
 
 MAINTAINER Jonathan Dowland <jmtd@debian.org>
 ENV LANG C.UTF-8
