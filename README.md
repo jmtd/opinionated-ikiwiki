@@ -1,28 +1,30 @@
-# Opinionated Ikiwiki-in-a-box
-
-[![Docker Repository on Quay](https://quay.io/repository/jdowland/opinionated-ikiwiki/status "Docker Repository on Quay")](https://quay.io/repository/jdowland/opinionated-ikiwiki)
+# Opinionated Ikiwiki-in-a-box container
 
 This is an opinionated, containerized version of
-[IkiWiki](https://ikiwiki.info).
+[IkiWiki](https://ikiwiki.info), the wiki compiler / static site generator.
 Builds of the container are available at
 <https://quay.io/repository/jdowland/opinionated-ikiwiki>. They're based on
 the *slim* variant of the current Debian stable release, and are approximately
-96 MiB compressed, 290 MiB on-disk.
+114 MiB (compressed)
 
- * The wiki is at [/](/);
- * The CGI end point is [/ikiwiki](/ikiwiki);
- * There are git repositories at
-   * [/git/ikiwiki.git](/git/ikiwiki.git) — the wiki source
-   * [/git/libdir.git](/git/libdir.git) — for custom plugins (default is empty)
-   * [/git/templates.git](/git/templates.git) — for custom templates (default is empty)
- * the HTTPD is lighttpd
+ * The container runs a web server (lighttpd), with
+   * The wiki content at [/](/);
+   * The CGI end point at [/ikiwiki](/ikiwiki);
+   * There are git repositories at
+     * [/git/ikiwiki.git](/git/ikiwiki.git) — the wiki source
+     * [/git/libdir.git](/git/libdir.git) — for custom plugins (default is empty)
+     * [/git/templates.git](/git/templates.git) — for custom templates (default is empty)
  * The c-compiler is `tcc`, rather than `gcc` (saving about 100 MiB)
  * There is no Python in the container
  * the Markdown flavour is [Discount](https://www.pell.portland.or.us/~orc/Code/discount/)
+ * The various data/configuration locations are consolidated under `/home/ikiwiki/conf`, containing:
+  * `git`, the above-mentioned git repositories
+  * `htpasswd`, for auth
+  * `setup`, the ikiwiki configuration file
 
 The following changes are made from a default IkiWiki installation:
 
- * theme plugin enabled and actiontabs selected
+ * theme plugin enabled and actiontabs theme selected
  * html5 by default
  * httpauth enabled
  * Python plugins are removed to fix a
@@ -33,7 +35,7 @@ The following changes are made from a default IkiWiki installation:
  * [Admonitions](https://ikiwiki.info/plugins/contrib/admonition/) are
    installed and enabled
  * A styled-table CSS class is provided (fullwidth_table)
- * Tables can have separate headers (in the `header` argument)
+ * Tables can have separate headers (in the `header` argument) 114.1 MiB 
  * You can defined aliases for PageSpecs in the setup file
 
 The IkiWiki version used is normally the latest tagged release with some
@@ -45,7 +47,7 @@ for the details.
     podman run \
         --name my_ikiwiki \
         -p 8080:8080 \
-        --mount source=myIkiWikiData,target=/home/ikiwiki/conf \
+        --mount type=volume,source=myIkiWikiData,target=/home/ikiwiki/conf \
         quay.io/jdowland/opinionated-ikiwiki:latest
 
 Then access your wiki at <http://localhost:8080>
@@ -73,6 +75,11 @@ container and I recommend you mark that as a _volume_, as in the example
 invocation above, where the volume has been named _myIkiWikiData_, and
 will persist beyond the lifetime of the running container, and could
 be mounted in another instance, etc.
+
+NOTE: specifying the volume using the `--mount` syntax (as in the above
+example) ensures that new volumes are pre-populated with the correct content
+from the container. This is important for the container to work! If you instead
+bind mount an empty directory over that path, things will break.
 
 ### Adding users
 
