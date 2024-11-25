@@ -8,6 +8,7 @@ git config --global user.name "ikiwiki-in-a-box automator"
 git config --global user.email null@example.org
 git config --global http.receivepack true
 git config --global receive.denynonfastforwards false
+git config --global init.defaultBranch main
 
 # creates ~/conf/git,
 # ~/conf/git/src.git, with an initial commit on master branch,
