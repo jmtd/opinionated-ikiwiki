@@ -25,7 +25,7 @@ associate_git_dir()
 
 acted=0
 mv src/.ikiwiki dot-ikiwiki
-if [ ! associate_git_dir "src" "ikiwiki" ]; then
+if ! associate_git_dir "src" "ikiwiki"; then
     acted=1
     mv dot-ikiwiki src/.ikiwiki
     # remove indexdb, which caches the stale commit refs.
