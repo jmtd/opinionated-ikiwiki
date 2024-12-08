@@ -11,7 +11,7 @@ git config --global receive.denynonfastforwards false
 git config --global init.defaultBranch main
 
 # creates ~/conf/git,
-# ~/conf/git/src.git, with an initial commit on master branch,
+# ~/conf/git/ikiwiki.git, with an initial commit on master branch,
 # clones it to ~/git; runs ikiwiki, generates ~/public_html,
 # ~/src/.ikiwiki (including userdb with admin:password) and generates
 # wrappers
