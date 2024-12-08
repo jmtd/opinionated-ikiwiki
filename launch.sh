@@ -46,8 +46,8 @@ if ! grep -q ^admin: /home/ikiwiki/conf/htpasswd; then
     fi
     echo "$PASSWORD" | htpasswd -i /home/ikiwiki/conf/htpasswd admin
     echo "$PASSWORD" >&2
-    unset PASSWORD
 fi
+unset PASSWORD
 
 # launch the webserver
 exec /usr/sbin/lighttpd -Df /etc/lighttpd/lighttpd.conf
