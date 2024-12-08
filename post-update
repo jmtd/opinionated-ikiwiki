@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+source $HOME/lib.sh
+
 # is the source directory missing? Re-create it
 if [ ! -d /home/ikiwiki/src ]; then
     # XXX we should do this under a lock
@@ -10,8 +12,7 @@ if [ ! -d /home/ikiwiki/src ]; then
         # fix "ref updates forbidden inside quarantine environment"
         unset "${!GIT_@}"
         git clone /home/ikiwiki/conf/git/ikiwiki.git src
-
-        mv /home/ikiwiki/dot-ikiwiki src/.ikiwiki
+        restore_dot_ikiwiki
     )
 fi
 

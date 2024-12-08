@@ -78,6 +78,7 @@ ADD \
     auto.setup \
     httpauth.conf \
     launch.sh \
+    lib.sh \
     setup.sh \
     pre-receive \
     post-update \
@@ -86,6 +87,7 @@ RUN chown ikiwiki \
     auto.setup \
     httpauth.conf \
     launch.sh \
+    lib.sh \
     setup.sh \
     pre-receive \
     post-update \

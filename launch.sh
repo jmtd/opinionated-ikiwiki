@@ -1,5 +1,8 @@
 #!/bin/bash
 set -euo pipefail
+set -x
+
+source lib.sh
 
 # Detect situation where cloned repos and source repos are not associated
 # (perhaps due to a volume mount) and re-create
@@ -24,10 +27,9 @@ associate_git_dir()
 }
 
 acted=0
-mv src/.ikiwiki dot-ikiwiki
 if ! associate_git_dir "src" "ikiwiki"; then
     acted=1
-    mv dot-ikiwiki src/.ikiwiki
+    restore_dot_ikiwiki
     # remove indexdb, which caches the stale commit refs.
     # See <https://ikiwiki.info/bugs/ikiwiki_explodes_when_git_rewrites_history/>
     rm -f src/.ikiwiki/indexdb

@@ -2,6 +2,8 @@
 set -euo pipefail
 set -x
 
+source lib.sh
+
 # configure and launch IkiWiki
 
 git config --global user.name "ikiwiki-in-a-box automator"
@@ -24,11 +26,13 @@ sed -i \
     conf/setup
 mv /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update{,.ikiwiki}
 
+# .ikiwiki needs to be in the conf volume
+mv src/.ikiwiki conf/.ikiwiki
+
 # reclone with --shared setting
-mv src/.ikiwiki dot-ikiwiki
 rm -rf src
 git clone --shared conf/git/ikiwiki.git src
-mv dot-ikiwiki src/.ikiwiki
+restore_dot_ikiwiki
 
 # early catch a force-push so we can rebuild the whole wiki
 cp -t  /home/ikiwiki/conf/git/ikiwiki.git/hooks \
