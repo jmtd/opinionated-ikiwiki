@@ -4,6 +4,8 @@ ARG DEBIAN_VERSION=12
 FROM debian:$DEBIAN_VERSION-slim as builder
 
 ARG DEBIAN_CODENAME=bookworm
+ARG IKIWIKI_SRC_REPO=git://git.ikiwiki.info/
+ARG IKIWIKI_SRC_REF=master
 
 MAINTAINER Jonathan Dowland <jmtd@debian.org>
 ENV LANG C.UTF-8
@@ -19,9 +21,9 @@ RUN apt-get update \
 WORKDIR /usr/src
 
 # obtain the git source
-RUN git clone https://github.com/jmtd/ikiwiki.git \
+RUN git clone $IKIWIKI_SRC_REPO ikiwiki \
     && cd ikiwiki \
-    && git checkout opinionated
+    && git checkout $IKIWIKI_SRC_REF
 
 # build and install ikiwiki
 WORKDIR /usr/src/ikiwiki
