@@ -33,6 +33,7 @@ IkiWiki::Setup::Automator->import(
         html5 => 1,
         hardlink => 1,
         only_committed_changes => 1,
+        gitmaster_branch => "main",
 
         comments_pagespec => "!*/Discussion",
         comments_pagename => "comment_",
