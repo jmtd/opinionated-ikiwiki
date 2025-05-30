@@ -34,6 +34,8 @@ RUN make pure_install
 # Runner ####################################################################
 FROM debian:$DEBIAN_VERSION-slim
 
+ARG UID=1050
+
 MAINTAINER Jonathan Dowland <jmtd@debian.org>
 ENV LANG C.UTF-8
 
@@ -72,7 +74,7 @@ RUN apt-get update \
 
 COPY --from=builder /usr/local /usr/local
 
-RUN adduser --gecos "ikiwiki user" --disabled-password ikiwiki
+RUN adduser --gecos "ikiwiki user" --disabled-password --uid $UID ikiwiki
 WORKDIR /home/ikiwiki
 ENV USER ikiwiki
 
