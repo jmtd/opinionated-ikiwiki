@@ -1,9 +1,9 @@
 # builder ####################################################################
-ARG DEBIAN_VERSION=12
+ARG DEBIAN_VERSION=13
 
 FROM debian:$DEBIAN_VERSION-slim as builder
 
-ARG DEBIAN_CODENAME=bookworm
+ARG DEBIAN_CODENAME=trixie
 ARG IKIWIKI_SRC_REPO=git://git.ikiwiki.info/
 ARG IKIWIKI_SRC_REF=master
 
@@ -69,6 +69,7 @@ RUN apt-get update \
         libtext-csv-perl \
         liblwpx-paranoidagent-perl \
         pwgen \
+        adduser \
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
