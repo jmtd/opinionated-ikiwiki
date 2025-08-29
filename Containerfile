@@ -76,6 +76,8 @@ COPY --from=builder /usr/local /usr/local
 
 RUN adduser --gecos "ikiwiki user" --disabled-password --uid $UID ikiwiki
 WORKDIR /home/ikiwiki
+RUN chmod g+rx /home/ikiwiki \
+    && chgrp root /home/ikiwiki
 ENV USER ikiwiki
 
 ADD \
