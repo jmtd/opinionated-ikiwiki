@@ -22,4 +22,4 @@ Maybe:
    override of individual pieces via env var definitions (Why?)
  * version control the setup file
     ./themes is an underlay directory added by the plugin at one point
- * unauthenticated git pull, and split cgiauthurl for ikiwiki
+ * unauthenticated git pull

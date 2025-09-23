@@ -29,7 +29,7 @@ The following changes are made from a default IkiWiki installation:
  * Python plugins are removed to fix a
    [bug](https://ikiwiki.info/bugs/inactive_python_plugins_cause_error_output_when_python_interpreter_is_missing/)
  * Comments are enabled and permitted on any non-Discussion page,
-   in Markdown or plain text format. Commenting requires a logged-in user.
+   in Markdown or plain text format.
    All comments by non-admins are held for moderation.
  * [Admonitions](https://ikiwiki.info/plugins/contrib/admonition/) are
    installed and enabled
