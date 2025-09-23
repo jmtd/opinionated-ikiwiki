@@ -8,12 +8,13 @@ the *slim* variant of the current Debian stable release, and are approximately
 114 MiB (compressed)
 
  * The container runs a web server (lighttpd), with
-   * The wiki content at [/](/);
-   * The CGI end point at [/ikiwiki.cgi](/ikiwiki.cgi);
+   * The wiki content at `/`
+   * The CGI end point at `/ikiwiki.cgi`
+   * Authentication end-point at `/auth/ikiwiki.cgi`
    * There are git repositories at
-     * [/git/ikiwiki.git](/git/ikiwiki.git) — the wiki source
-     * [/git/libdir.git](/git/libdir.git) — for custom plugins (default is empty)
-     * [/git/templates.git](/git/templates.git) — for custom templates (default is empty)
+     * `/git/ikiwiki.git` — the wiki source
+     * `/git/libdir.git` — for custom plugins (default is empty)
+     * `/git/templates.git` — for custom templates (default is empty)
  * The c-compiler is `tcc`, rather than `gcc` (saving about 100 MiB)
  * There is no Python in the container
  * the Markdown flavour is [Discount](https://www.pell.portland.or.us/~orc/Code/discount/)
@@ -31,11 +32,10 @@ The following changes are made from a default IkiWiki installation:
  * Comments are enabled and permitted on any non-Discussion page,
    in Markdown or plain text format.
    All comments by non-admins are held for moderation.
- * [Admonitions](https://ikiwiki.info/plugins/contrib/admonition/) are
-   installed and enabled
- * A styled-table CSS class is provided (fullwidth_table)
+ * [Admonitions](https://ikiwiki.info/plugins/admonition/) are enabled
+ * A styled-table CSS class is provided (`fullwidth_table`)
  * Tables can have separate headers (in the `header` argument)
- * You can defined aliases for PageSpecs in the setup file
+ * You can defined aliases for PageSpecs in the setup file ([pagespec_alias](https://ikiwiki.info/plugins/contrib/pagespec_alias/))
 
 The IkiWiki version used is normally the latest tagged release with some
 extra patches on top. See <https://github.com/jmtd/ikiwiki/blob/opinionated-doc/README.md>
