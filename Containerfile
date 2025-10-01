@@ -70,6 +70,7 @@ RUN apt-get update \
         liblwpx-paranoidagent-perl \
         pwgen \
         adduser \
+        libnet-openid-consumer-perl \
     && apt-get clean \
     && find /var/lib/apt/lists -type f -delete
 
@@ -121,5 +122,7 @@ RUN rm /usr/local/lib/ikiwiki/plugins/rst \
 USER ikiwiki
 EXPOSE 8080
 RUN /home/ikiwiki/setup.sh
+
+ENV GIT_TRACE 1
 
 CMD ["/home/ikiwiki/launch.sh"]
