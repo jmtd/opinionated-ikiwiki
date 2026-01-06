@@ -90,6 +90,7 @@ ADD \
     setup.sh \
     pre-receive \
     post-update \
+    cgi.sh \
     /home/ikiwiki/
 RUN chown ikiwiki \
     auto.setup \
@@ -99,6 +100,7 @@ RUN chown ikiwiki \
     setup.sh \
     pre-receive \
     post-update \
+    cgi.sh \
     /home/ikiwiki/
 
 ADD ikiwiki.conf \
