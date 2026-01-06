@@ -10,7 +10,7 @@ ARG IKIWIKI_SRC_REF=master
 MAINTAINER Jonathan Dowland <jmtd@debian.org>
 ENV LANG C.UTF-8
 
-RUN echo deb-src [ signed-by=/usr/share/keyrings/debian-archive-keyring.gpg ] http://deb.debian.org/debian/ $DEBIAN_CODENAME main \
+RUN echo deb-src [ signed-by=/usr/share/keyrings/debian-archive-keyring.pgp ] http://deb.debian.org/debian/ $DEBIAN_CODENAME main \
     | tee /etc/apt/sources.list.d/src.list
 
 RUN apt-get update \
