@@ -21,8 +21,10 @@ printf "password\npassword" | ikiwiki --setup auto.setup
 rm auto.setup
 
 # Ikiwiki::Setup::Automator overwrites this value
-sed -i '/^git_wrapper/d' conf/setup
-rm -f /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update
+sed -i \
+    's#^git_wrapper: /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update#&.ikiwiki#' \
+    conf/setup
+mv /home/ikiwiki/conf/git/ikiwiki.git/hooks/post-update{,.ikiwiki}
 
 # .ikiwiki needs to be in the conf volume
 mv src/.ikiwiki conf/.ikiwiki
