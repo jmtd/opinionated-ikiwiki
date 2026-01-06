@@ -17,7 +17,7 @@ git config --global init.defaultBranch main
 # clones it to ~/git; runs ikiwiki, generates ~/public_html,
 # ~/src/.ikiwiki (including userdb with admin:password) and generates
 # wrappers
-printf "password\npassword" | ikiwiki --setup auto.setup
+printf "password\n$(pwgen -s 32)" | ikiwiki --setup auto.setup
 rm auto.setup
 
 # Ikiwiki::Setup::Automator overwrites this value
