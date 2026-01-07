@@ -51,4 +51,4 @@ fi
 unset PASSWORD
 
 # launch the webserver
-exec /usr/sbin/lighttpd -Df /etc/lighttpd/lighttpd.conf
+exec /usr/sbin/apache2 -k start -DFOREGROUND

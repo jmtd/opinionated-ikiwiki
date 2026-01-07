@@ -45,7 +45,8 @@ ENV LANG C.UTF-8
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
-        git lighttpd \
+        git \
+        apache2 \
         apache2-utils \
         gettext \
         tcc \
@@ -84,7 +85,6 @@ ENV USER ikiwiki
 
 ADD \
     auto.setup \
-    httpauth.conf \
     launch.sh \
     lib.sh \
     setup.sh \
@@ -93,7 +93,6 @@ ADD \
     /home/ikiwiki/
 RUN chown ikiwiki \
     auto.setup \
-    httpauth.conf \
     launch.sh \
     lib.sh \
     setup.sh \
@@ -102,18 +101,14 @@ RUN chown ikiwiki \
     /home/ikiwiki/
 
 ADD ikiwiki.conf \
-    git.conf \
-    /etc/lighttpd/conf-enabled/
+    /etc/apache2/sites-enabled/
 
-RUN chmod 777 /var/run \
-    /var/cache/lighttpd/compress \
-    /var/cache/lighttpd/uploads
+# cgid for threaded MPM
+RUN a2enmod cgid
+RUN echo ScriptSock /tmp/cgisock > /etc/apache2/mods-enabled/cgid.conf
 
-RUN sed -i \
-    -e 's/^server.port.*$/server.port = 8080/' \
-    -e 's#^server.errorlog.*$#server.errorlog = "/dev/stderr"#' \
-    -e 's#^server.document-root.*$#server.document-root = "/home/ikiwiki/public_html"#' \
-    /etc/lighttpd/lighttpd.conf
+RUN echo Listen 8080 > /etc/apache2/ports.conf
+RUN rm /etc/apache2/sites-enabled/000-default.conf
 
 # workaround for https://ikiwiki.info/bugs/inactive_python_plugins_cause_error_output_when_python_interpreter_is_missing/
 RUN rm /usr/local/lib/ikiwiki/plugins/rst \
@@ -121,8 +116,8 @@ RUN rm /usr/local/lib/ikiwiki/plugins/rst \
 
 USER ikiwiki
 EXPOSE 8080
-RUN /home/ikiwiki/setup.sh
+RUN ./setup.sh
 
-ENV GIT_TRACE 1
+ENV APACHE_RUN_DIR=. APACHE_RUN_USER=ikiwiki APACHE_RUN_GROUP=ikiwiki APACHE_LOG_DIR=/tmp APACHE_PID_FILE=/tmp/apache.pid
 
 CMD ["/home/ikiwiki/launch.sh"]
